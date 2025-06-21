@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Data Visualization Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>📊 Interactive Data Dashboard</h1>
+            <p>Real-time data visualization with dynamic controls</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <div class="control-item">
+                    <label for="dataSet">Data Set</label>
+                    <select id="dataSet">
+                        <option value="sales">Sales Performance</option>
+                        <option value="users">User Analytics</option>
+                        <option value="revenue">Revenue Trends</option>
+                        <option value="products">Product Categories</option>
+                    </select>
+                </div>
+                <div class="control-item">
+                    <label for="timeRange">Time Range</label>
+                    <select id="timeRange">
+                        <option value="7">Last 7 Days</option>
+                        <option value="30">Last 30 Days</option>
+                        <option value="90">Last 90 Days</option>
+                        <option value="365">Last Year</option>
+                    </select>
+                </div>
+                <div class="control-item">
+                    <label for="chartType">Chart Type</label>
+                    <select id="chartType">
+                        <option value="line">Line Chart</option>
+                        <option value="bar">Bar Chart</option>
+                        <option value="area">Area Chart</option>
+                        <option value="radar">Radar Chart</option>
+                    </select>
+                </div>
+                <div class="control-item">
+                    <label>&nbsp;</label>
+                    <button onclick="refreshData()">🔄 Refresh Data</button>
+                </div>
+                <div class="control-item">
+                    <label>&nbsp;</label>
+                    <button onclick="randomizeData()">🎲 Randomize</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalValue">0</div>
+                    <div class="stat-label">Total Value</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avgValue">0</div>
+                    <div class="stat-label">Average</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="maxValue">0</div>
+                    <div class="stat-label">Peak Value</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="growthRate">0%</div>
+                    <div class="stat-label">Growth Rate</div>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h3 class="chart-title">Primary Metrics</h3>
+                <div class="loading" id="loading1">
+                    <div class="spinner"></div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="primaryChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h3 class="chart-title">Category Breakdown</h3>
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h3 class="chart-title">Performance Comparison</h3>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h3 class="chart-title">Trend Analysis</h3>
+                <div class="chart-container">
+                    <canvas id="multiLineChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
